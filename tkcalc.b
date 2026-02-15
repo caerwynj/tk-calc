@@ -24,49 +24,47 @@ Tkcalc: module
 tkcfg(): array of string
 {
 	return  array[] of {
-	"frame .main -bg #202020 -borderwidth 2 -relief ridge",
+	"frame .main -bg white -borderwidth 2 -relief flat",
 	"wm geometry . 360x460",
 	"wm minsize . 320 420",
-	"frame .dispframe -bg black -borderwidth 2 -relief sunken",
-	"label .disp -bg gray -fg white -anchor e -text 0 -width 18 -height 2",
-	"frame .keys -bg #202020",
+	"label .disp -bg white -fg black -anchor e -text 0 -width 180 -height 20",
+	"frame .keys -bg white",
 
-	"frame .r0 -bg #202020",
-	"button .b7 -text 7 -command {send cmd 7} -width 17 -height 13",
-	"button .b8 -text 8 -command {send cmd 8} -width 17 -height 13",
-	"button .b9 -text 9 -command {send cmd 9} -width 17 -height 13",
-	"button .bdiv -text / -command {send cmd /} -width 17 -height 13",
+	"frame .r0 -bg white",
+	"button .b7 -text 7 -command {send cmd 7} -width 20 -height 20 -bg gray",
+	"button .b8 -text 8 -command {send cmd 8} -width 20 -height 20 -bg gray",
+	"button .b9 -text 9 -command {send cmd 9} -width 20 -height 20 -bg gray",
+	"button .bdiv -text ÷ -command {send cmd /} -width 20 -height 20 -bg olive",
 	"pack .b7 .b8 .b9 .bdiv -in .r0 -side left -expand 1 -fill both -padx 2 -pady 2",
 
-	"frame .r1 -bg #202020",
-	"button .b4 -text 4 -command {send cmd 4} -width 17 -height 13",
-	"button .b5 -text 5 -command {send cmd 5} -width 17 -height 13",
-	"button .b6 -text 6 -command {send cmd 6} -width 17 -height 13",
-	"button .bmul -text * -command {send cmd *} -width 17 -height 13",
+	"frame .r1 -bg white",
+	"button .b4 -text 4 -command {send cmd 4} -width 20 -height 20 -bg gray",
+	"button .b5 -text 5 -command {send cmd 5} -width 20 -height 20 -bg gray",
+	"button .b6 -text 6 -command {send cmd 6} -width 20 -height 20 -bg gray",
+	"button .bmul -text × -command {send cmd *} -width 20 -height 20 -bg olive",
 	"pack .b4 .b5 .b6 .bmul -in .r1 -side left -expand 1 -fill both -padx 2 -pady 2",
 
-	"frame .r2 -bg #202020",
-	"button .b1 -text 1 -command {send cmd 1} -width 17 -height 13",
-	"button .b2 -text 2 -command {send cmd 2} -width 17 -height 13",
-	"button .b3 -text 3 -command {send cmd 3} -width 17 -height 13",
-	"button .bsub -text - -command {send cmd -} -width 17 -height 13",
+	"frame .r2 -bg white",
+	"button .b1 -text 1 -command {send cmd 1} -width 20 -height 20 -bg gray",
+	"button .b2 -text 2 -command {send cmd 2} -width 20 -height 20 -bg gray",
+	"button .b3 -text 3 -command {send cmd 3} -width 20 -height 20 -bg gray",
+	"button .bsub -text - -command {send cmd -} -width 20 -height 20 -bg olive",
 	"pack .b1 .b2 .b3 .bsub -in .r2 -side left -expand 1 -fill both -padx 2 -pady 2",
 
-	"frame .r3 -bg #202020",
-	"button .b0 -text 0 -command {send cmd 0} -width 17 -height 13",
-	"button .bdot -text . -command {send cmd .} -width 17 -height 13",
-	"button .beq -text = -command {send cmd =} -width 17 -height 13",
-	"button .badd -text + -command {send cmd +} -width 17 -height 13",
+	"frame .r3 -bg white",
+	"button .b0 -text 0 -command {send cmd 0} -width 20 -height 20 -bg gray",
+	"button .bdot -text . -command {send cmd .} -width 20 -height 20",
+	"button .beq -text = -command {send cmd =} -width 20 -height 20 -bg olive",
+	"button .badd -text + -command {send cmd +} -width 20 -height 20 -bg olive",
 	"pack .b0 .bdot .beq .badd -in .r3 -side left -expand 1 -fill both -padx 2 -pady 2",
 
-	"frame .r4 -bg #202020",
-	"button .bclr -text C -command {send cmd C} -width 17 -height 13",
-	"pack .bclr -in .r4 -side left -expand 1 -fill both -padx 2 -pady 2",
+	"frame .r4 -bg white",
+	"button .bclr -text C -command {send cmd C} -width 20 -height 20 -bg red",
+	"pack .disp .bclr -in .r4 -side left -expand 1 -fill both -padx 2 -pady 2",
 
-	"pack .r0 .r1 .r2 .r3 .r4 -in .keys -fill x",
-	"pack .disp -in .dispframe -fill x -padx 6 -pady 6 -ipady 6",
-	"pack .dispframe -in .main -fill x -padx 8 -pady 8",
-	"pack .keys -in .main -fill both -expand 1 -padx 6 -pady 6",
+	"pack .r4 .r0 .r1 .r2 .r3 -in .keys -fill x",
+#	"pack .disp -in .main -fill x -padx 8 -pady 8",
+	"pack .keys -in .main -fill both -expand 1 -padx 3 -pady 3",
 	"pack .main -fill both -expand 1",
 	"pack propagate . 1",
 	"update",
@@ -76,10 +74,6 @@ tkcfg(): array of string
 init(ctxt: ref Draw->Context, nil: list of string)
 {
 	sys  = load Sys  Sys->PATH;
-	if (ctxt == nil) {
-		sys->fprint(sys->fildes(2), "about: no window context\n");
-		raise "fail:bad context";
-	}
 
 	draw = load Draw Draw->PATH;
 	tk   = load Tk   Tk->PATH;
@@ -87,6 +81,12 @@ init(ctxt: ref Draw->Context, nil: list of string)
 	str = load String String->PATH;
 
 	tkclient->init();
+	if (ctxt == nil)
+		ctxt = tkclient->makedrawcontext();
+	if (ctxt == nil) {
+		sys->fprint(sys->fildes(2), "about: no window context\n");
+		raise "fail:bad context";
+	}
 	(t, menubut) := tkclient->toplevel(ctxt, "", "Calc", 0);
 
 	cmdchan := chan of string;
