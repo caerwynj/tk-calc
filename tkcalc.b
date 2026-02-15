@@ -27,7 +27,7 @@ tkcfg(): array of string
 	"frame .main -bg white -borderwidth 2 -relief flat",
 	"wm geometry . 360x460",
 	"wm minsize . 320 420",
-	"label .disp -bg white -fg black -anchor e -text 0 -width 180 -height 20",
+	"label .disp -bg white -fg black -anchor e -text 0 -width 100 -height 20",
 	"frame .keys -bg white",
 
 	"frame .r0 -bg white",
@@ -59,7 +59,7 @@ tkcfg(): array of string
 	"pack .b0 .bdot .beq .badd -in .r3 -side left -expand 1 -fill both -padx 2 -pady 2",
 
 	"frame .r4 -bg white",
-	"button .bclr -text C -command {send cmd C} -width 20 -height 20 -bg red",
+	"button .bclr -text C -command {send cmd C} -width 28 -height 20 -bg red -fg white",
 	"pack .disp .bclr -in .r4 -side left -expand 1 -fill both -padx 2 -pady 2",
 
 	"pack .r4 .r0 .r1 .r2 .r3 -in .keys -fill x",
@@ -214,5 +214,5 @@ apply(op: string, a, b: real): (real, int)
 
 fmt(v: real): string
 {
-	return sys->sprint("%g", v);
+	return sys->sprint("%.5g", v);
 }
